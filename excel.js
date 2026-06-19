@@ -1,0 +1,1 @@
+async function lerArquivo(){ return []; }
