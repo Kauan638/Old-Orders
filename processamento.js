@@ -188,7 +188,7 @@ function cruzarDados(
 
         }
 
-       resultado.push({
+      resultado.push({
 
     Loja:
     p.loja,
@@ -222,8 +222,20 @@ function cruzarDados(
 
     Master:
     codigoMaster,
-        });
 
+    DiasMaster:
+    diasMaster,
+
+    StatusMaster:
+    statusMaster,
+
+    Localizacao:
+    localizacao,
+
+    Situacao:
+    situacao
+
+});
     });
 
 }
