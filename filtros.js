@@ -75,7 +75,11 @@ function renderTabela(){
 
     const dados =
     obterDadosFiltrados();
+const limite = 1000;
 
+const dadosExibidos =
+dados.slice(0, limite);
+    
     const tbody =
     document.getElementById(
         "tbody"
@@ -83,7 +87,7 @@ function renderTabela(){
 
     tbody.innerHTML = "";
 
-    dados.forEach(item=>{
+    dadosExibidos.forEach(item=>{
 
         let classe = "";
 
@@ -117,7 +121,7 @@ function renderTabela(){
 
         }
 
-        tbody.innerHTML += `
+       let html = "";
 
         <tr class="${classe}">
 
