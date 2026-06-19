@@ -62,9 +62,10 @@ await carregarEtiquetas(
         atualizarLoading(50);
         
         cruzarDados(
-            pedidos,
-            masters
-        );
+    pedidos,
+    masters,
+    etiquetas
+);
 
         atualizarLoading(75);
         
@@ -126,7 +127,8 @@ console.log(
 
 function cruzarDados(
     pedidos,
-    masters
+    masters,
+    etiquetas
 ){
 
     resultado = [];
@@ -146,6 +148,18 @@ function cruzarDados(
 
     });
 
+const mapaEtiquetas =
+new Map();
+
+etiquetas.forEach(e=>{
+
+    mapaEtiquetas.set(
+        e.etiquetaMaster,
+        e.situacaoEtiqueta
+    );
+
+});
+    
     pedidos.forEach(p=>{
 
         const chave =
