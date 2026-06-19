@@ -59,6 +59,41 @@ if(dataInicio || dataFim){
     const dataPedido =
     new Date(item.DataPedido);
 
+    let passouCarga = true;
+
+if(cargaInicio || cargaFim){
+
+    const dataCarga =
+    new Date(item.DataGeracaoCarga);
+
+    if(cargaInicio){
+
+        const inicio =
+        new Date(cargaInicio);
+
+        if(dataCarga < inicio){
+            passouCarga = false;
+        }
+
+    }
+
+    if(cargaFim){
+
+        const fim =
+        new Date(cargaFim);
+
+        fim.setHours(
+            23,59,59,999
+        );
+
+        if(dataCarga > fim){
+            passouCarga = false;
+        }
+
+    }
+
+}
+    
     if(dataInicio){
 
         const inicio =
@@ -117,7 +152,11 @@ if(dataInicio || dataFim){
 
 passouData
 
-        );
+&&
+
+passouCarga
+
+);
 
     });
 
