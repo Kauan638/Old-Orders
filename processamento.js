@@ -185,6 +185,9 @@ etiquetas.forEach(e=>{
         let localizacao =
         "";
 
+let situacaoEtiqueta =
+"";
+        
         if(!master){
 
             situacao =
@@ -198,6 +201,11 @@ etiquetas.forEach(e=>{
             codigoMaster =
             master.master;
 
+situacaoEtiqueta =
+mapaEtiquetas.get(
+    codigoMaster
+) || "";
+            
             statusMaster =
             master.status;
 
