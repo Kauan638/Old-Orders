@@ -26,9 +26,19 @@ function obterDadosFiltrados(){
     .trim();
 
     const situacao =
-    document
-    .getElementById("fSituacao")
-    .value;
+document
+.getElementById("fSituacao")
+.value;
+
+const dataInicio =
+document
+.getElementById("fDataInicio")
+.value;
+
+const dataFim =
+document
+.getElementById("fDataFim")
+.value;
 
     return resultado.filter(item=>{
 
