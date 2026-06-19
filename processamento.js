@@ -71,8 +71,10 @@ async function processar(){
             renderTabela();
         }
 
-        alert(
-            `Cruzamento concluído.
+        console.log(
+    `Cruzamento concluído:
+    ${resultado.length}`
+);
 
 Pedidos: ${pedidos.length}
 Masters: ${masters.length}
