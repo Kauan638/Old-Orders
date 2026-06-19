@@ -188,50 +188,40 @@ function cruzarDados(
 
         }
 
-        resultado.push({
+       resultado.push({
 
-            Loja:
-            p.loja,
+    Loja:
+    p.loja,
 
-            Pedido:
-            p.pedido,
+    Pedido:
+    p.pedido,
 
-            Produto:
-            p.produto,
+    Produto:
+    p.produto,
 
-            Descricao:
-            p.descricao,
+    Descricao:
+    p.descricao,
 
-            Quantidade:
-            p.quantidade,
+    Quantidade:
+    p.quantidade,
 
-            DataPedido:
-            p.dataPedido,
+    DataPedido:
+    p.dataPedido,
 
-            StatusPedido:
-            p.statusPedido,
+    StatusPedido:
+    p.statusPedido,
 
-            StatusCarga:
-            p.statusCarga,
+    StatusCarga:
+    p.statusCarga,
 
-            Carga:
-            p.carga,
+    Carga:
+    p.carga,
 
-            Master:
-            codigoMaster,
+    DataGeracaoCarga:
+    p.dataGeracaoCarga,
 
-            DiasMaster:
-            diasMaster,
-
-            StatusMaster:
-            statusMaster,
-
-            Localizacao:
-            localizacao,
-
-            Situacao:
-            situacao
-
+    Master:
+    codigoMaster,
         });
 
     });
