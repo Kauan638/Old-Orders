@@ -219,15 +219,16 @@ async function testarArquivos(){
         masterFile
     );
 
-    console.log(
-        "PEDIDOS",
-        pedidos
-    );
+   console.log(
+    "Pedidos:",
+    pedidos.length
+);
 
-    console.log(
-        "MASTERS",
-        masters
-    );
+console.log(
+    "Masters:",
+    masters.length
+);
+   
 
     alert(
         `Pedidos: ${pedidos.length}
