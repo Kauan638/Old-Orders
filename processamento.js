@@ -55,10 +55,10 @@ async function processar(){
 
         atualizarLoading(75);
         
-        console.log(
-            "RESULTADO",
-            resultado
-        );
+    // console.log(
+//     "RESULTADO",
+//     resultado
+// );
 
         atualizarDashboard();
         atualizarLoading(100);
