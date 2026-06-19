@@ -1,4 +1,56 @@
 // =====================================
+// LOADING
+// =====================================
+
+function mostrarLoading(){
+
+    document
+    .getElementById(
+        "loadingBox"
+    )
+    .style.display =
+    "block";
+
+    atualizarLoading(0);
+
+}
+
+function esconderLoading(){
+
+    setTimeout(()=>{
+
+        document
+        .getElementById(
+            "loadingBox"
+        )
+        .style.display =
+        "none";
+
+    },500);
+
+}
+
+function atualizarLoading(valor){
+
+    document
+    .getElementById(
+        "loadingFill"
+    )
+    .style.width =
+    valor + "%";
+
+    document
+    .getElementById(
+        "loadingPercent"
+    )
+    .innerText =
+    valor + "%";
+
+}
+
+
+
+// =====================================
 // CONFIGURAÇÕES
 // =====================================
 
