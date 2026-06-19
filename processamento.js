@@ -53,12 +53,16 @@ async function processar(){
             masters
         );
 
+        atualizarLoading(75);
+        
         console.log(
             "RESULTADO",
             resultado
         );
 
         atualizarDashboard();
+        atualizarLoading(100);
+        esconderLoading();
 
         if(
             typeof renderTabela ===
