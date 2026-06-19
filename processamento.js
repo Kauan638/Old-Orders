@@ -148,15 +148,31 @@ function cruzarDados(
 
     });
 
-const mapaEtiquetas =
+const mapaEtiquetasMaster =
+new Map();
+
+const mapaEtiquetasProduto =
 new Map();
 
 etiquetas.forEach(e=>{
 
-    mapaEtiquetas.set(
-        e.etiquetaMaster,
-        e.situacaoEtiqueta
-    );
+    if(e.etiquetaMaster){
+
+        mapaEtiquetasMaster.set(
+            e.etiquetaMaster,
+            e.situacaoEtiqueta
+        );
+
+    }
+
+    if(e.produto){
+
+        mapaEtiquetasProduto.set(
+            e.produto,
+            e.situacaoEtiqueta
+        );
+
+    }
 
 });
     
