@@ -42,6 +42,38 @@ document
 
     return resultado.filter(item=>{
 
+let passouData = true;
+
+if(dataInicio || dataFim){
+
+    const dataPedido =
+    new Date(item.DataPedido);
+
+    if(dataInicio){
+
+        const inicio =
+        new Date(dataInicio);
+
+        if(dataPedido < inicio){
+            passouData = false;
+        }
+    }
+
+    if(dataFim){
+
+        const fim =
+        new Date(dataFim);
+
+        fim.setHours(
+            23,59,59,999
+        );
+
+        if(dataPedido > fim){
+            passouData = false;
+        }
+    }
+}
+        
         return(
 
             item.Loja
@@ -66,10 +98,14 @@ document
             &&
 
             (
-                !situacao ||
-                item.Situacao ===
-                situacao
-            )
+    !situacao ||
+    item.Situacao ===
+    situacao
+)
+
+&&
+
+passouData
 
         );
 
