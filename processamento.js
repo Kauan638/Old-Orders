@@ -54,7 +54,11 @@ alert(
         await carregarMasters(
             masterFile
         );
-
+        
+const etiquetas =
+await carregarEtiquetas(
+    etiquetaFile
+);
         atualizarLoading(50);
         
         cruzarDados(
