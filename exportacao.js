@@ -21,10 +21,25 @@ function exportarExcel(){
     // RESULTADO COMPLETO
     // =====================================
 
-    const wsResultado =
-    XLSX.utils.json_to_sheet(
-        resultado
-    );
+   const resultadoExportacao =
+resultado.map(item => ({
+
+    ...item,
+
+    StatusFinal:
+
+    item.Master
+
+    ? item.StatusMaster
+
+    : "Sem Master"
+
+}));
+
+const wsResultado =
+XLSX.utils.json_to_sheet(
+    resultadoExportacao
+);
 
     XLSX.utils.book_append_sheet(
         wb,
