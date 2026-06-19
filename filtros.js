@@ -40,6 +40,16 @@ document
 .getElementById("fDataFim")
 .value;
 
+const cargaInicio =
+document
+.getElementById("fCargaInicio")
+.value;
+
+const cargaFim =
+document
+.getElementById("fCargaFim")
+.value;
+    
     return resultado.filter(item=>{
 
 let passouData = true;
