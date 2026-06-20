@@ -4,6 +4,7 @@
 
 let graficoStatus = null;
 let graficoLojas = null;
+let graficoEtiquetas = null;
 
 // =====================================
 // ATUALIZA DASHBOARD
@@ -44,6 +45,84 @@ function atualizarDashboard(){
     ).innerText =
     kpis.produtos;
 
+    // =====================================
+    // KPIs ETIQUETAS
+    // =====================================
+
+    const aguardando =
+    resultado.filter(
+        x =>
+        (x.SituacaoEtiqueta || "")
+        .includes("Aguardando")
+    ).length;
+
+    const montagem =
+    resultado.filter(
+        x =>
+        (x.StatusMaster || "")
+        .includes("Em Montagem")
+    ).length;
+
+    const montadas =
+    resultado.filter(
+        x =>
+        (x.SituacaoEtiqueta || "")
+        .includes("Montada")
+    ).length;
+
+    const naoChecada =
+    resultado.filter(
+        x =>
+        (x.SituacaoEtiqueta || "")
+        .includes("Não Checada")
+    ).length;
+
+    const canceladas =
+    resultado.filter(
+        x =>
+        (x.SituacaoEtiqueta || "")
+        .includes("Cancelada")
+    ).length;
+
+    document.getElementById(
+        "kpiAguardando"
+    ).innerText =
+    aguardando;
+
+    document.getElementById(
+        "kpiMontagem"
+    ).innerText =
+    montagem;
+
+    document.getElementById(
+        "kpiMontadas"
+    ).innerText =
+    montadas;
+
+    document.getElementById(
+        "kpiNaoChecada"
+    ).innerText =
+    naoChecada;
+
+    document.getElementById(
+        "kpiCanceladas"
+    ).innerText =
+    canceladas;
+
+    atualizarGraficoStatus();
+
+    atualizarGraficoLojas();
+
+    if(
+        typeof atualizarGraficoEtiquetas
+        === "function"
+    ){
+        atualizarGraficoEtiquetas();
+    }
+
+    atualizarRanking();
+
+}
     // ==========================
     // KPI ETIQUETAS
     // ==========================
