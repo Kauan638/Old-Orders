@@ -289,7 +289,7 @@ let situacaoEtiqueta =
 p.carga,
 
 Descarga:
-p.desccarga || "",
+p.descCarga,
 
 DataGeracaoCarga:
 p.dataGeracaoCarga,
