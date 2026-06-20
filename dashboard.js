@@ -82,8 +82,6 @@ let graficoEtiquetas = null;
         atualizarGraficoEtiquetas();
     }
 
-    atualizarRanking();
-
 }
    
 // =====================================
