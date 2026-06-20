@@ -434,14 +434,14 @@ function atualizarGraficoEtiquetas(){
 
     if(!ctx) return;
 
-    if(window.graficoEtiquetas){
+   if(graficoEtiquetas){
 
-        window.graficoEtiquetas.destroy();
+    graficoEtiquetas.destroy();
 
-    }
+}
 
-    window.graficoEtiquetas =
-    new Chart(ctx,{
+graficoEtiquetas =
+new Chart(ctx,{
 
         type:"doughnut",
 
