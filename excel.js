@@ -96,6 +96,16 @@ async function carregarPedidos(file){
     await lerArquivo(file);
 
 console.log(
+    "DESCARGA PRIMEIRO PEDIDO:",
+    dados[0].Desccarga
+);
+
+console.log(
+    "PRIMEIRO PEDIDO:",
+    dados[0]
+);
+    
+console.log(
     "VALOR DA DESCARGA:",
     dados[0].Desccarga
 );
