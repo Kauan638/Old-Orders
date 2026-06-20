@@ -458,6 +458,38 @@ border:1px solid var(--border);
 color:white;
 }
 
+.graficos-etiquetas{
+
+margin-bottom:25px;
+
+}
+
+.grafico-card{
+
+background:linear-gradient(
+180deg,
+#0f172a,
+#111c34
+);
+
+border:1px solid #1e293b;
+
+border-radius:18px;
+
+padding:20px;
+
+}
+
+.grafico-card h3{
+
+margin-bottom:20px;
+
+font-size:18px;
+
+color:white;
+
+}
+
 /* ================================= */
 /* GRAFICOS */
 /* ================================= */
