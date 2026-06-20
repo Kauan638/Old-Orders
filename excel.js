@@ -99,6 +99,11 @@ console.log(
     "VALOR DA DESCARGA:",
     dados[0].Desccarga
 );
+
+console.log(
+    "PRIMEIRA LINHA:",
+    dados[0]
+);
     
     console.log("PEDIDOS");
     console.log(dados[0]);
