@@ -131,12 +131,15 @@ async function carregarPedidos(file){
         statusCarga:
         r["Status Carga"] || "",
 
-       carga:
+      carga:
 r.Nrocarga || "",
+
+descCarga:
+r.Desccarga || "",
 
 dataGeracaoCarga:
 r.Dtahorgeracaocarga || ""
-
+        
     }));
 
 }
