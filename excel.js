@@ -95,6 +95,10 @@ async function carregarPedidos(file){
     const dados =
     await lerArquivo(file);
 
+    console.log("PEDIDOS");
+    console.log(dados[0]);
+    alert(JSON.stringify(Object.keys(dados[0])));
+    
     console.log("TODAS AS COLUNAS:");
     console.log(Object.keys(dados[0]));
 
