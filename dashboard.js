@@ -6,44 +6,6 @@ let graficoStatus = null;
 let graficoLojas = null;
 let graficoEtiquetas = null;
 
-// =====================================
-// ATUALIZA DASHBOARD
-// =====================================
-
-function atualizarDashboard(){
-
-    const kpis =
-    calcularKPIs();
-
-    document.getElementById(
-        "kpiTotal"
-    ).innerText =
-    kpis.total;
-
-    document.getElementById(
-        "kpiSemMaster"
-    ).innerText =
-    kpis.semMaster;
-
-    document.getElementById(
-        "kpiComMaster"
-    ).innerText =
-    kpis.comMaster;
-
-    document.getElementById(
-        "kpiMasterAntiga"
-    ).innerText =
-    kpis.masterAntiga;
-
-    document.getElementById(
-        "kpiLojas"
-    ).innerText =
-    kpis.lojas;
-
-    document.getElementById(
-        "kpiProdutos"
-    ).innerText =
-    kpis.produtos;
 
     // =====================================
     // KPIs ETIQUETAS
