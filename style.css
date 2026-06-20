@@ -1068,3 +1068,76 @@ word-break:break-word;
 min-height:18px;
 
 }
+
+/* ================================= */
+/* TEMA CLARO */
+/* ================================= */
+
+body.tema-claro{
+
+background:#f1f5f9;
+
+color:#0f172a;
+
+}
+
+body.tema-claro .topo,
+body.tema-claro .upload-card,
+body.tema-claro .kpi,
+body.tema-claro .grafico-card,
+body.tema-claro .ranking-card,
+body.tema-claro .resultado,
+body.tema-claro .loading-box{
+
+background:white;
+
+color:#0f172a;
+
+border:1px solid #cbd5e1;
+
+box-shadow:
+0 5px 20px rgba(
+0,0,0,.08
+);
+
+}
+
+body.tema-claro th{
+
+background:#e2e8f0;
+
+color:#0f172a;
+
+}
+
+body.tema-claro td{
+
+color:#0f172a;
+
+}
+
+body.tema-claro .filtros input,
+body.tema-claro .filtros select{
+
+background:white;
+
+color:#0f172a;
+
+border:1px solid #cbd5e1;
+
+}
+
+body.tema-claro .topo p,
+body.tema-claro .upload-card span,
+body.tema-claro .arquivo-selecionado,
+body.tema-claro .kpi span{
+
+color:#475569;
+
+}
+
+body.tema-claro tbody tr:hover{
+
+background:#e2e8f0;
+
+}
