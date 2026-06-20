@@ -285,11 +285,14 @@ let situacaoEtiqueta =
     StatusCarga:
     p.statusCarga,
 
-    Carga:
-    p.carga,
+   Carga:
+p.carga,
 
-    DataGeracaoCarga:
-    p.dataGeracaoCarga,
+DescCarga:
+p.desccarga || "",
+
+DataGeracaoCarga:
+p.dataGeracaoCarga,
 
     Master:
     codigoMaster,
