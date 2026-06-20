@@ -261,6 +261,12 @@ overflow:hidden;
 
 }
 
+.kpi{
+
+cursor:pointer;
+
+}
+
 .kpi:hover{
 
 transform:translateY(-4px);
