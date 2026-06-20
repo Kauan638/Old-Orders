@@ -97,8 +97,15 @@ async function carregarPedidos(file){
 
     console.log("PEDIDOS");
     console.log(dados[0]);
-    alert(JSON.stringify(Object.keys(dados[0])));
-    
+
+    alert(
+        JSON.stringify(
+            Object.keys(dados[0]),
+            null,
+            2
+        )
+    );
+
     console.log("TODAS AS COLUNAS:");
     console.log(Object.keys(dados[0]));
 
@@ -108,9 +115,6 @@ async function carregarPedidos(file){
             c.toUpperCase().includes("CARGA")
         )
     );
-
-    console.log("PRIMEIRA LINHA:");
-    console.log(dados[0]);
 
     return dados.map(r=>({
 
