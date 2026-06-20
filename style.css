@@ -382,6 +382,61 @@ grid-template-columns:
 
 }
 
+.kpis-etiquetas{
+
+display:grid;
+
+grid-template-columns:
+repeat(5,1fr);
+
+gap:18px;
+
+margin-bottom:25px;
+
+}
+
+.kpi-aguardando{
+border-left:5px solid #eab308;
+}
+
+.kpi-montagem{
+border-left:5px solid #3b82f6;
+}
+
+.kpi-montadas{
+border-left:5px solid #22c55e;
+}
+
+.kpi-checada{
+border-left:5px solid #64748b;
+}
+
+.kpi-cancelada{
+border-left:5px solid #ef4444;
+}
+
+@media(max-width:1200px){
+
+.kpis-etiquetas{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:700px){
+
+.kpis-etiquetas{
+
+grid-template-columns:
+1fr;
+
+}
+
+}
+
 /* ================================= */
 /* FILTROS */
 /* ================================= */
