@@ -7,63 +7,29 @@ let filtroEtiquetaGlobal = "";
 
 function obterDadosFiltrados(){
 
-    const loja =
-    document
-    .getElementById("fLoja")
-    .value
-    .toLowerCase()
-    .trim();
-
-    const pedido =
-    document
-    .getElementById("fPedido")
-    .value
-    .toLowerCase()
-    .trim();
-
-    const produto =
-    document
-    .getElementById("fProduto")
-    .value
-    .toLowerCase()
-    .trim();
-
-    const situacao =
-    document
-    .getElementById("fSituacao")
-    .value;
-
-    
     return resultado.filter(item=>{
 
-        return(
+        const passouSituacao =
 
-            item.Loja
-            .toString()
-            .toLowerCase()
-            .includes(loja)
+        !filtroSituacaoGlobal ||
 
-            &&
+        item.Situacao ===
+        filtroSituacaoGlobal;
 
-            item.Pedido
-            .toString()
-            .toLowerCase()
-            .includes(pedido)
+        const passouEtiqueta =
 
-            &&
+        !filtroEtiquetaGlobal ||
 
-            item.Produto
-            .toString()
-            .toLowerCase()
-            .includes(produto)
+        (item.SituacaoEtiqueta || "")
+        .includes(
+            filtroEtiquetaGlobal
+        );
 
-            &&
+        return (
 
-            (
-    !situacao ||
-    item.Situacao === situacao
-)
+            passouSituacao &&
 
+            passouEtiqueta
 
         );
 
@@ -172,3 +138,48 @@ document.addEventListener(
 
     }
 );
+
+
+function filtrarSituacao(situacao){
+
+    filtroEtiquetaGlobal = "";
+
+    if(
+        filtroSituacaoGlobal ===
+        situacao
+    ){
+
+        filtroSituacaoGlobal = "";
+
+    }else{
+
+        filtroSituacaoGlobal =
+        situacao;
+
+    }
+
+    renderTabela();
+
+}
+
+function filtrarEtiqueta(etiqueta){
+
+    filtroSituacaoGlobal = "";
+
+    if(
+        filtroEtiquetaGlobal ===
+        etiqueta
+    ){
+
+        filtroEtiquetaGlobal = "";
+
+    }else{
+
+        filtroEtiquetaGlobal =
+        etiqueta;
+
+    }
+
+    renderTabela();
+
+}
