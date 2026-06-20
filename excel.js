@@ -92,15 +92,15 @@ async function lerArquivo(file){
 
 async function carregarPedidos(file){
 
-    const dados=
+    const dados =
     await lerArquivo(file);
 
-console.log("COLUNAS PEDIDOS:");
+    console.log("COLUNAS PEDIDOS");
     console.log(Object.keys(dados[0]));
 
-    console.log("PRIMEIRA LINHA PEDIDOS:");
+    console.log("PRIMEIRA LINHA PEDIDOS");
     console.log(dados[0]);
-    
+
     return dados.map(r=>({
 
         loja:
