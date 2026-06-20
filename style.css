@@ -1070,14 +1070,19 @@ min-height:18px;
 }
 
 /* ================================= */
-/* TEMA CLARO */
+/* TEMA CLARO SOFT */
 /* ================================= */
 
 body.tema-claro{
 
-background:#f1f5f9;
+background:
+linear-gradient(
+180deg,
+#e2e8f0,
+#cbd5e1
+);
 
-color:#0f172a;
+color:#1e293b;
 
 }
 
@@ -1085,45 +1090,51 @@ body.tema-claro .topo,
 body.tema-claro .upload-card,
 body.tema-claro .kpi,
 body.tema-claro .grafico-card,
-body.tema-claro .ranking-card,
 body.tema-claro .resultado,
 body.tema-claro .loading-box{
 
-background:white;
+background:
+linear-gradient(
+180deg,
+#f1f5f9,
+#e2e8f0
+);
 
-color:#0f172a;
+color:#1e293b;
 
 border:1px solid #cbd5e1;
 
 box-shadow:
-0 5px 20px rgba(
-0,0,0,.08
+0 4px 12px rgba(
+0,0,0,.06
 );
 
 }
 
-body.tema-claro th{
+body.tema-claro .topo{
 
-background:#e2e8f0;
-
-color:#0f172a;
+background:
+linear-gradient(
+135deg,
+#e2e8f0,
+#cbd5e1
+);
 
 }
 
+body.tema-claro .topo::after{
+
+opacity:.5;
+
+}
+
+body.tema-claro h1,
+body.tema-claro h2,
+body.tema-claro h3,
+body.tema-claro th,
 body.tema-claro td{
 
-color:#0f172a;
-
-}
-
-body.tema-claro .filtros input,
-body.tema-claro .filtros select{
-
-background:white;
-
-color:#0f172a;
-
-border:1px solid #cbd5e1;
+color:#1e293b;
 
 }
 
@@ -1136,8 +1147,41 @@ color:#475569;
 
 }
 
+body.tema-claro .filtros input,
+body.tema-claro .filtros select{
+
+background:#f8fafc;
+
+color:#1e293b;
+
+border:1px solid #cbd5e1;
+
+}
+
+body.tema-claro table thead{
+
+background:#dbe4ee;
+
+}
+
 body.tema-claro tbody tr:hover{
 
-background:#e2e8f0;
+background:#dbe4ee;
+
+}
+
+body.tema-claro .acoes button:last-child{
+
+background:#f8fafc;
+
+color:#1e293b;
+
+border:1px solid #cbd5e1;
+
+}
+
+body.tema-claro canvas{
+
+filter:saturate(.9);
 
 }
