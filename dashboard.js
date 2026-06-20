@@ -295,62 +295,6 @@ function atualizarGraficoLojas(){
 
 }
 
-// =====================================
-// RANKING
-// =====================================
-
-function atualizarRanking(){
-
-    const mapa = {};
-
-    resultado.forEach(item=>{
-
-        if(!mapa[item.Loja]){
-
-            mapa[item.Loja]=0;
-
-        }
-
-        mapa[item.Loja]++;
-
-    });
-
-    const ranking =
-    Object.entries(mapa)
-
-    .sort(
-        (a,b)=>b[1]-a[1]
-    );
-
-    const tbody =
-    document.getElementById(
-        "rankingLojas"
-    );
-
-    tbody.innerHTML="";
-
-    ranking.forEach(item=>{
-
-        tbody.innerHTML += `
-
-        <tr>
-
-            <td>
-            ${item[0]}
-            </td>
-
-            <td>
-            ${item[1]}
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-}
-
 
 function atualizarGraficoEtiquetas(){
 
