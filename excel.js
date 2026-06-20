@@ -148,12 +148,12 @@ async function carregarPedidos(file){
         statusCarga:
         r["Status Carga"] || "",
 
-      carga:
+carga:
 r.Nrocarga || "",
 
 descCarga:
 String(
-    r.DESCCARGAEXPEDICAO || ""
+    r.Desccarga || ""
 ).trim(),
 
 dataGeracaoCarga:
