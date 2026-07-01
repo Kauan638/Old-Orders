@@ -6,6 +6,27 @@ let graficoStatus = null;
 let graficoLojas = null;
 let graficoEtiquetas = null;
 
+// Paleta alinhada com o style.css (tokens do tema industrial)
+const CORES = {
+    amber: "#F2A93B",
+    green: "#3DCB82",
+    red:   "#E8564F",
+    blue:  "#4C8FD1",
+    muted: "#8B97A3",
+    text:  "#E7ECF1"
+};
+
+// Registra o plugin de data labels (mostra os valores
+// direto nas fatias/barras, sem precisar passar o mouse)
+if(typeof ChartDataLabels !== "undefined"){
+    Chart.register(ChartDataLabels);
+}
+
+// Ajustes globais de leitura no fundo escuro
+Chart.defaults.color = CORES.muted;
+Chart.defaults.borderColor = "rgba(255,255,255,.06)";
+Chart.defaults.font.family = "'Inter', 'Segoe UI', sans-serif";
+
 
 // =====================================
 // DASHBOARD PRINCIPAL
@@ -76,6 +97,13 @@ function atualizarDashboard(){
 // =====================================
 // GRAFICO STATUS
 // =====================================
+// Antes era um doughnut. Como "Sem Master" costuma
+// dominar (às vezes >95% dos casos), a fatia vermelha
+// engolia visualmente as outras duas categorias, que
+// ficavam praticamente ilegíveis no gráfico. Uma barra
+// horizontal com o valor escrito ao lado de cada barra
+// comunica a proporção real mesmo quando os números são
+// muito desbalanceados.
 
 function atualizarGraficoStatus(){
 
@@ -87,30 +115,56 @@ function atualizarGraficoStatus(){
     if(graficoStatus)
         graficoStatus.destroy();
 
+    const dados = [
+        { label:"Sem Master",    valor:resultado.filter(x=>x.Situacao==="🔴 Sem Master").length,    cor:CORES.red },
+        { label:"Com Master",    valor:resultado.filter(x=>x.Situacao==="🟢 Com Master").length,    cor:CORES.green },
+        { label:"Master Antiga", valor:resultado.filter(x=>x.Situacao==="🟠 Master Antiga").length, cor:CORES.amber }
+    ]
+    .sort((a,b)=>b.valor - a.valor);
+
+    const total =
+    dados.reduce((s,x)=>s+x.valor,0) || 1;
+
     graficoStatus = new Chart(ctx,{
-        type:"doughnut",
+
+        type:"bar",
 
         data:{
-            labels:[
-                "Sem Master",
-                "Com Master",
-                "Master Antiga"
-            ],
+            labels: dados.map(x=>x.label),
 
             datasets:[{
-                data:[
-                    resultado.filter(x=>x.Situacao==="🔴 Sem Master").length,
-                    resultado.filter(x=>x.Situacao==="🟢 Com Master").length,
-                    resultado.filter(x=>x.Situacao==="🟠 Master Antiga").length
-                ],
-
-                backgroundColor:[
-                    "#ef4444",
-                    "#22c55e",
-                    "#f59e0b"
-                ]
+                data: dados.map(x=>x.valor),
+                backgroundColor: dados.map(x=>x.cor),
+                borderRadius:4,
+                barThickness:34
             }]
+        },
+
+        options:{
+
+            indexAxis:"y",
+
+            plugins:{
+
+                legend:{ display:false },
+
+                datalabels:{
+                    color: CORES.text,
+                    anchor:"end",
+                    align:"end",
+                    font:{ weight:700 },
+                    formatter:(valor)=>
+                        `${valor} (${Math.round(valor/total*100)}%)`
+                }
+
+            },
+
+            scales:{
+                x:{ beginAtZero:true, grace:"15%" }
+            }
+
         }
+
     });
 
 }
@@ -119,6 +173,11 @@ function atualizarGraficoStatus(){
 // =====================================
 // GRAFICO LOJAS
 // =====================================
+// Corrigido: o dataset não tinha "label", por isso a
+// legenda mostrava "undefined". Como é um gráfico de
+// série única com categorias no eixo X, a legenda não
+// agrega nada — removida. Adicionado o valor exato no
+// topo de cada barra.
 
 function atualizarGraficoLojas(){
 
@@ -152,10 +211,34 @@ function atualizarGraficoLojas(){
             labels: ranking.map(x=>x[0]),
 
             datasets:[{
+                label:"Pedidos por loja",
                 data: ranking.map(x=>x[1]),
-                backgroundColor:"#3b82f6"
+                backgroundColor: CORES.blue,
+                borderRadius:4
             }]
+        },
+
+        options:{
+
+            plugins:{
+
+                legend:{ display:false },
+
+                datalabels:{
+                    color: CORES.text,
+                    anchor:"end",
+                    align:"top",
+                    font:{ weight:700 }
+                }
+
+            },
+
+            scales:{
+                y:{ beginAtZero:true, grace:"12%" }
+            }
+
         }
+
     });
 
 }
@@ -164,6 +247,10 @@ function atualizarGraficoLojas(){
 // =====================================
 // GRAFICO ETIQUETAS
 // =====================================
+// Mantido como doughnut (as 5 categorias têm proporções
+// mais equilibradas, então o formato funciona bem aqui),
+// mas agora com o percentual escrito direto em cada fatia
+// em vez de depender só da legenda/tooltip.
 
 function atualizarGraficoEtiquetas(){
 
@@ -174,6 +261,17 @@ function atualizarGraficoEtiquetas(){
 
     if(graficoEtiquetas)
         graficoEtiquetas.destroy();
+
+    const valores = [
+        resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Aguardando")).length,
+        resultado.filter(x=>(x.StatusMaster || "").includes("Em Montagem")).length,
+        resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Montada")).length,
+        resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Não Checada")).length,
+        resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Cancelada")).length
+    ];
+
+    const total =
+    valores.reduce((s,v)=>s+v,0) || 1;
 
     graficoEtiquetas = new Chart(ctx,{
 
@@ -191,25 +289,47 @@ function atualizarGraficoEtiquetas(){
 
             datasets:[{
 
-                data:[
-
-                    resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Aguardando")).length,
-                    resultado.filter(x=>(x.StatusMaster || "").includes("Em Montagem")).length,
-                    resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Montada")).length,
-                    resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Não Checada")).length,
-                    resultado.filter(x=>(x.SituacaoEtiqueta || "").includes("Cancelada")).length
-
-                ],
+                data: valores,
 
                 backgroundColor:[
-                    "#eab308",
-                    "#3b82f6",
-                    "#22c55e",
-                    "#64748b",
-                    "#ef4444"
-                ]
+                    CORES.amber,
+                    CORES.blue,
+                    CORES.green,
+                    CORES.muted,
+                    CORES.red
+                ],
+
+                borderColor:"#14181C",
+                borderWidth:2
+
             }]
+        },
+
+        options:{
+
+            plugins:{
+
+                legend:{
+                    position:"bottom",
+                    labels:{ color: CORES.muted }
+                },
+
+                datalabels:{
+                    color:"#14181C",
+                    font:{ weight:700, size:12 },
+                    formatter:(valor)=>{
+
+                        if(valor === 0) return "";
+
+                        return `${Math.round(valor/total*100)}%`;
+
+                    }
+                }
+
+            }
+
         }
+
     });
 
 }
